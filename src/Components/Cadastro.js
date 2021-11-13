@@ -12,7 +12,6 @@ import styles from '../Components/Cadastro.module.css';
 // function useFormik({
 //   initialValues
 // }){
-
 //   console.log(initialValues);
 //   return{
 //     values: initialValues
@@ -59,7 +58,7 @@ function Cadastro() {
       <form onSubmit={formik.handleSubmit} className={styles.formElements}>
 
         <div>
-          <label htmlFor="tipoUsuario">Tipo de usuário testetstets</label>
+          <label htmlFor="tipoUsuario">Tipo de usuário</label>
           <input type="text" id="tipoUsuario" name="tipoUsuario" onChange={formik.handleChange} value={formik.values.tipoUsuario} />
         </div>
 
