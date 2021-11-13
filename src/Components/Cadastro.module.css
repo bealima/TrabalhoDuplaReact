@@ -1,3 +1,38 @@
-.divCadastro{
-  display: flex;
+.h1Title{
+  background-color: black;
+  color: white;
+  text-align: center;
 }
+h1{
+  margin: 0;
+}
+
+.formElements{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+form div{
+  margin-top: 15px;
+}
+
+
+button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+}
+
+button:hover{
+  background-color: white;
+  color: black
+}
+
+
+
+
+
+
+

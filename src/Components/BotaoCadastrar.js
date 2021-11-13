@@ -1,7 +1,7 @@
 function BotaoCadastrar(){
   return(
     <div>
-
+    
     </div>
   );
 }
