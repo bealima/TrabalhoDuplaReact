@@ -59,7 +59,7 @@ function Cadastro() {
       <form onSubmit={formik.handleSubmit} className={styles.formElements}>
 
         <div>
-          <label htmlFor="tipoUsuario">Tipo de usuário</label>
+          <label htmlFor="tipoUsuario">Tipo de usuário testetstets</label>
           <input type="text" id="tipoUsuario" name="tipoUsuario" onChange={formik.handleChange} value={formik.values.tipoUsuario} />
         </div>
 
