@@ -5,69 +5,69 @@ import {useState} from 'react';
 
 
 function Cadastro(){
+
+  const [idUsuario,setIdUsuario]=useState(0)
+  const [listUsuarios,setListUsuarios]=useState([])
+  const [isEdicao, setIsEdicao] = useState(false)
+    
   const formik = useFormik({
     initialValues:{
-      tipoUsuario:'', 
-      nome:'',
-      dataNasc:'', 
+      id: 0,
+      primeiroNome:'', 
+      ultimoNome:'',
       email:'',
-      senha:''
+      endereco:'', 
+      telefone:''
     },
     enableReinitialize: true,
-    onSubmit:(values, {resetForm}) => {
-      console.log(isEdicao)
+    onSubmit:(values, ) => {
+     
       if (!isEdicao){
-        //let idAtual = 0
-        // idAtual= id
-        // setId(id+1)
-        // console.log(values.id)
-        console.log(values)
+
+        values.id = idUsuario
+        setIdUsuario(idUsuario + 1)
+
         if (listUsuarios.length === 0){
           setListUsuarios([values])
-          console.log(654654)
+
         }else {
           setListUsuarios([...listUsuarios, values])
         }
-          
-        console.log('blabla',listUsuarios)    
-        // formik.values.id++
-        resetForm();
-      } else {
-        console.log('é edição mesmo')
-        let userEditado = listUsuarios.find(e => e.nome === values.nome)
+        
+        formik.resetForm();
+
+      } else { /*Se isEdicao*/
+    
+        let userEditado = listUsuarios.find(e => e.id === values.id)
         console.log(userEditado)
         // console.log(values)
 
         if (userEditado !== -1 ){
-          userEditado.tipoUsuario = values.tipoUsuario
-          userEditado.nome = values.nome
-          userEditado.dataNasc = values.dataNasc
+          userEditado.primeiroNome = values.primeiroNome
+          userEditado.ultimoNome = values.ultimoNome
           userEditado.email = values.email
-          userEditado.senha = values.senha
+          userEditado.endereco = values.endereco
+          userEditado.telefone = values.telefone
           
           setListUsuarios([...listUsuarios])
         }
         console.log(listUsuarios)
       }
+
     }
   });
-  
-    const [isEdicao, setIsEdicao] = useState(false)
-    const [id,setId]=useState(0)
-    const [listUsuarios,setListUsuarios]=useState([])
-    
+
     const handleDelete = (id) => {
-      console.log("Button delete");
-      console.log(id)
-      const list = listUsuarios.filter(usuario => usuario.nome !== id)
+
+      const list = listUsuarios.filter(user => user.id !== id)
       setListUsuarios(list)
     }
     
     const handleUpdate = (id) => {
-      console.log("Button update");
+
       setIsEdicao(true)
-      const usuario = listUsuarios.find(user => user.nome === id)
-      console.log(usuario)
+
+      const usuario = listUsuarios.find(user => user.id === id)
       formik.setValues(usuario)
       
 
@@ -78,28 +78,24 @@ function Cadastro(){
       <form  onSubmit={formik.handleSubmit}>
         
         <div>
-          <label htmlFor="tipoUsuario">Tipo de usuário</label>
-          <input type="text"  id="tipoUsuario" name="tipoUsuario" onChange={formik.handleChange}  value={formik.values.tipoUsuario}/>
+          <label htmlFor="primeiroNome">Primeiro Nome:</label>
+          <input type="text"  id="primeiroNome" name="primeiroNome" onChange={formik.handleChange}  value={formik.values.primeiroNome}/>
         </div>
         <div>
-          <label htmlFor="nome">Nome completo*</label>
-          <input type="text"  id="nome" name="nome" onChange={formik.handleChange} value={formik.values.nome}/>
-        </div>
-        <div>
-          <label htmlFor="dataNascimento">Data de Nascimento*:</label>
-          <input type="date"  id="dataNasc" name="dataNasc" onChange={formik.handleChange} value={formik.values.dataNasc}/>
+          <label htmlFor="ultimoNome">Sobrenome:</label>
+          <input type="text"  id="ultimoNome" name="ultimoNome" onChange={formik.handleChange} value={formik.values.ultimoNome}/>
         </div>
         <div>
           <label htmlFor="email">E-mail*:</label>
           <input type="email"  id="email" name="email" onChange={formik.handleChange}  value={formik.values.email}/>
         </div>
         <div>
-          <label htmlFor="senha">Senha*:</label>
-          <input type="password"  id="senha" name="senha" onChange={formik.handleChange} value={formik.values.senha}/>
+          <label htmlFor="endereco">Endereco:</label>
+          <input type="text"  id="endereco" name="endereco" onChange={formik.handleChange} value={formik.values.endereco}/>
         </div>
         <div>
-          <input type="checkbox" />
-          <label htmlFor="primeiroEmprego">Primeiro Emprego?</label>
+          <label htmlFor="telefone">Telefone:</label>
+          <input type="text"  id="telefone" name="telefone" onChange={formik.handleChange} value={formik.values.telefone}/>
         </div>
         <div>
           <button type="submit">Cadastrar</button>

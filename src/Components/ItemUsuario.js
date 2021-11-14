@@ -2,11 +2,12 @@ function ItemUsuario({usuario}){
   return(
     <>
       <li>
-        Id: {usuario.id}
-        Tipo de Usuario: {usuario.tipoUsuario}
-        Nome: {usuario.nome}
-        Data de Nascimento: {usuario.dataNasc}
+        Primeiro Nome: {usuario.primeiroNome}
+        Sobrenome: {usuario.ultimoNome}
         E-mail: {usuario.email}
+        Endereco: {usuario.endereco}
+        Telefone: {usuario.telefone}
+        
       </li>
     </>
   );

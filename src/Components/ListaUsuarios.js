@@ -8,8 +8,8 @@ function ListaUsuarios({listaUsuarios, onDelete, onUpdate}){
       {listaUsuarios.map((user, index) => (
         <div key={index}>
           <ItemUsuario usuario={user}/> 
-          <button type="button" onClick={() => onDelete(user.nome)}>Remover</button>
-          <button type="button" onClick={() => onUpdate(user.nome)}>Editar</button>
+          <button type="button" onClick={() => onDelete(user.id)}>Remover</button>
+          <button type="button" onClick={() => onUpdate(user.id)}>Editar</button>
         </div>
       ))}
       
