@@ -15,26 +15,44 @@ function Cadastro(){
     },
     enableReinitialize: true,
     onSubmit:(values, {resetForm}) => {
-      
-      //let idAtual = 0
-      // idAtual= id
-      // setId(id+1)
-      // console.log(values.id)
-      console.log(values)
-      if (listUsuarios.length === 0){
-        setListUsuarios([values])
-        console.log(654654)
-      }else {
-        setListUsuarios([...listUsuarios, values])
+      console.log(isEdicao)
+      if (!isEdicao){
+        //let idAtual = 0
+        // idAtual= id
+        // setId(id+1)
+        // console.log(values.id)
+        console.log(values)
+        if (listUsuarios.length === 0){
+          setListUsuarios([values])
+          console.log(654654)
+        }else {
+          setListUsuarios([...listUsuarios, values])
+        }
+          
+        console.log('blabla',listUsuarios)    
+        // formik.values.id++
+        resetForm();
+      } else {
+        console.log('é edição mesmo')
+        let userEditado = listUsuarios.find(e => e.nome === values.nome)
+        console.log(userEditado)
+        // console.log(values)
+
+        if (userEditado !== -1 ){
+          userEditado.tipoUsuario = values.tipoUsuario
+          userEditado.nome = values.nome
+          userEditado.dataNasc = values.dataNasc
+          userEditado.email = values.email
+          userEditado.senha = values.senha
+          
+          setListUsuarios([...listUsuarios])
+        }
+        console.log(listUsuarios)
       }
-        
-      console.log('blabla',listUsuarios)    
-      // formik.values.id++
-      resetForm();
-      
     }
   });
- 
+  
+    const [isEdicao, setIsEdicao] = useState(false)
     const [id,setId]=useState(0)
     const [listUsuarios,setListUsuarios]=useState([])
     
@@ -45,8 +63,14 @@ function Cadastro(){
       setListUsuarios(list)
     }
     
-    const handleUpdate = () => {
+    const handleUpdate = (id) => {
       console.log("Button update");
+      setIsEdicao(true)
+      const usuario = listUsuarios.find(user => user.nome === id)
+      console.log(usuario)
+      formik.setValues(usuario)
+      
+
     }
 
   return(
