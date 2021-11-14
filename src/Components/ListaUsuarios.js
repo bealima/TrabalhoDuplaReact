@@ -1,25 +1,15 @@
 import ItemUsuario from "./ItemUsuario";
-import Cadastro from "./Cadastro";
 
-function ListaUsuarios({usuarios, setUsuarios}){
-  function Remover(user){
-    console.log('oi')
-    let index = usuarios.findIndex((u)=>u.id=== user.id)
-    usuarios.splice(index,1)
-    setUsuarios([...usuarios]) 
-  };
-  function Editar(props){
-    console.log('tchau')
-    return <Cadastro/>
-  };
+
+function ListaUsuarios({listaUsuarios, onDelete, onUpdate}){
     
   return(
     <div>
-      {usuarios.map((user) => (
-        <div key={user.id}>
+      {listaUsuarios.map((user, index) => (
+        <div key={index}>
           <ItemUsuario usuario={user}/> 
-          <button type="button" onClick={() => Remover(user)}>Remover</button>
-          <button type="button" onClick={() => Editar(user)}>Editar</button>
+          <button type="button" onClick={() => onDelete(user.nome)}>Remover</button>
+          <button type="button" onClick={() => onUpdate(user.nome)}>Editar</button>
         </div>
       ))}
       

@@ -3,6 +3,7 @@ import HeaderCadastro from './Components/HeaderCadastro';
 import './App.css';
 
 function App() {
+  
   return (
     <div>
       <HeaderCadastro/>

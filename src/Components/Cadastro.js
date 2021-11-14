@@ -3,53 +3,56 @@ import { useFormik } from 'formik';
 import ListaUsuarios from './ListaUsuarios';
 import {useState} from 'react';
 
-// function useFormik({
-//   initialValues
-// }){
-  
-//   console.log(initialValues);
-//   return{
-//     values: initialValues
-//   }
-// }
 
 function Cadastro(){
   const formik = useFormik({
     initialValues:{
-      id: 0,
       tipoUsuario:'', 
       nome:'',
       dataNasc:'', 
       email:'',
       senha:''
     },
-    onSubmit: values => {
+    enableReinitialize: true,
+    onSubmit:(values, {resetForm}) => {
+      
+      //let idAtual = 0
+      // idAtual= id
+      // setId(id+1)
+      // console.log(values.id)
       console.log(values)
+      if (listUsuarios.length === 0){
+        setListUsuarios([values])
+        console.log(654654)
+      }else {
+        setListUsuarios([...listUsuarios, values])
+      }
+        
+      console.log('blabla',listUsuarios)    
+      // formik.values.id++
+      resetForm();
+      
     }
   });
-  // function Cadastrar(e){
-  //   e.preventDefault()
-  //   let usuario= {id, tipoUsuario, nome, dataNasc, email, senha}
-  //   setUsuariosCadastrados([...usuariosCadastrados, usuario])
-  //   setId(id+1)
-
-  //}
-    // const[tipoUsuario, setTipoUsuario] = useState([]);
-    // const[nome, setNome] = useState('');
-    // const[dataNasc, setDataNasc] = useState('');
-    // const[email, setEmail] = useState('');
-    // const[senha, setSenha] = useState('');
-    // const[id, setId] = useState(0);
+ 
+    const [id,setId]=useState(0)
+    const [listUsuarios,setListUsuarios]=useState([])
     
-
-     const [usuariosCadastrados, setUsuariosCadastrados] = useState([])
-     const [id,setId]=useState([])
-     
-
+    const handleDelete = (id) => {
+      console.log("Button delete");
+      console.log(id)
+      const list = listUsuarios.filter(usuario => usuario.nome !== id)
+      setListUsuarios(list)
+    }
+    
+    const handleUpdate = () => {
+      console.log("Button update");
+    }
 
   return(
     <div>
       <form  onSubmit={formik.handleSubmit}>
+        
         <div>
           <label htmlFor="tipoUsuario">Tipo de usuário</label>
           <input type="text"  id="tipoUsuario" name="tipoUsuario" onChange={formik.handleChange}  value={formik.values.tipoUsuario}/>
@@ -78,7 +81,7 @@ function Cadastro(){
           <button type="submit">Cadastrar</button>
         </div>
       </form>
-      <ListaUsuarios usuarios={usuariosCadastrados} setUsuarios={setUsuariosCadastrados} />
+      <ListaUsuarios listaUsuarios={listUsuarios} onDelete={handleDelete} onUpdate={handleUpdate}/>
     </div>
   );
 }
