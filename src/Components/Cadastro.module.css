@@ -1,10 +1,16 @@
 .h1Title{
   background-color: black;
   color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
   text-align: center;
 }
-h1{
-  margin: 0;
+
+.liElements{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .formElements{
@@ -12,23 +18,44 @@ h1{
   display: flex;
   flex-direction: column;
 }
+
+
+
 form div{
   margin-top: 15px;
+  display: flex;
+  align-items: center;
 }
 
+
+input {
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px gray;
+  outline: none;
+  width: 300px;
+}
 
 button {
   background-color: black;
   color: white;
   cursor: pointer;
-  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   height: 30px;
+  width: 80px;
 }
 
 button:hover{
   background-color: white;
   color: black
 }
+
+.btn{
+  align-items: center;
+  display: flex;
+}
+
 
 
 
