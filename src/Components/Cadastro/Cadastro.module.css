@@ -1,0 +1,61 @@
+.cadastro{
+
+  align-items: center;
+  border: 1.5px solid #192231;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 30%;
+  margin-top: 10px;
+
+}
+
+.cadastro h1 {
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 20px;
+  background-color: #192231;
+  width: 100%;
+  text-align: center;
+  color: white;
+
+}
+.cadastro form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro input{
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  padding-left: 3px;
+  margin-bottom: 5px;
+  width: 200px;
+
+}
+
+.cadastro label {
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  margin: initial;
+}
+
+.cadastro button {
+  background-color: #985e6d;
+  border: 1.5px solid #985e6d;
+  border-radius: 3px;
+  color: white;
+  width: 60px;
+  height: 20px;
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 30px;
+  
+  
+}

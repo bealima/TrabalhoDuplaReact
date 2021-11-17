@@ -1,0 +1,10 @@
+.itemUsuario  {
+  font-size: 12px;
+  font-family: 'Times New Roman', Times, serif;
+  margin: initial;
+}
+
+.itemUsuario li {
+  list-style: none;
+  margin: 5px 10px 5px 10px;
+}

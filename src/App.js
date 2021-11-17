@@ -1,5 +1,4 @@
-import Cadastro from './Components/Cadastro';
-import ListaUsuarios from './Components/ListaUsuarios';
+import Cadastro from "./Components/Cadastro/Cadastro"
 
 import './App.css';
 
